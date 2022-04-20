@@ -1,25 +1,41 @@
-const findFirstDuplicate = (arr) => {
-  if (arr.length > 1) {
-  for (let i = 0; i < arr.length; i++) {
-    if ((arr[i] === arr[i + 1])) {
-     return arr[i];
-    }}
-  } 
-    return -1
+function findFirstDuplicate(arr) {
+  const uniques = new Set();
+
+  for (const value of arr) {
+    if (uniques.has(value)) {
+      return value;
+    }
+
+    uniques.add(value);
   }
+
+  return -1;
+}
 
 if (require.main === module) {
   // add your own tests in here
   console.log("Expecting: 3");
-  console.log("=>", findFirstDuplicate([2, 1, 3, 3, 2]));
+  console.log(findFirstDuplicate([2, 1, 3, 3, 2]));
 
   console.log("");
 
   console.log("Expecting: -1");
-  console.log("=>", findFirstDuplicate([1, 2, 3, 4]));
+  console.log(findFirstDuplicate([1, 2, 3, 4]));
+
+  console.log("");
+
+  console.log("Expecting: -1");
+  console.log(findFirstDuplicate([]));
+
+  console.log("");
+
+  console.log("Expecting: -1");
+  console.log(findFirstDuplicate([5]));
+
+  console.log("");
+
+  console.log("Expecting: 7");
+  console.log(findFirstDuplicate([7, 1, 2, 3, 7]));
 }
 
 module.exports = findFirstDuplicate;
-
-// Please add your pseudocode to this file
-// And a written explanation of your solution
